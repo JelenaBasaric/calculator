@@ -33,6 +33,7 @@
     line-height: 20px;
     overflow-wrap: break-word;
     word-wrap: break-word;
+    background-color: black;
   }
   
   .outputScreen {
@@ -64,3 +65,4 @@
   .jumbo {
     width: 160px;
   }
+  
