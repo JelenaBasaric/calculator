@@ -1,3 +1,4 @@
+import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -7,6 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class DisplayComponent {
   @Input() id!:string;
-  
+  @Input() value!:string;
+  @Input() ngClass!:string
 
 }

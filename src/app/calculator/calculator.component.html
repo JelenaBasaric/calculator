@@ -1,6 +1,32 @@
-<div class="calculator">
-    <app-display class="formulaScreen" [id]="formulaScreen"></app-display>
-    <app-display class="outputScreen" [id]="outputScreen"></app-display>
+<div [ngClass]="ngClass">
+    <app-display [ngClass]="'formulaScreen'" [id]="'formulaScreen'" [value]="'0'" >0</app-display>
+    <app-display [ngClass]="'outputScreen'" [id]="'outputScreen'" [value]="'0'">0</app-display>
 </div>
-
+<div>
+    <app-all-button [ngClass]="'ac'" id="clear" [value]="'AC'" ></app-all-button>
+    <app-all-button [ngClass]="'opbutton'" id="divide" [value]="'/'"></app-all-button>
+    <app-all-button [ngClass]="'opbutton'" id="multiply" [value]="'*'"></app-all-button>
+</div>
+<div>
+    <app-all-button [ngClass]="'numbutton'" id="seven" [value]="'7'" [callbackFun]="onClickSetValue"></app-all-button>
+    <app-all-button [ngClass]="'numbutton'" id="eight" [value]="'8'"></app-all-button>
+    <app-all-button [ngClass]="'numbutton'" id="nine" [value]="'9'"></app-all-button>
+    <app-all-button [ngClass]="'opbutton'" id="subtract" [value]="'-'"></app-all-button>
+</div>
+<div>
+    <app-all-button [ngClass]="'numbutton'" id="four" [value]="'4'"></app-all-button>
+    <app-all-button [ngClass]="'numbutton'" id="five" [value]="'5'"></app-all-button>
+    <app-all-button [ngClass]="'numbutton'" id="six" [value]="'6'"></app-all-button>
+    <app-all-button [ngClass]="'opbutton'" id="add" [value]="'+'"></app-all-button>
+</div>
+<div>
+<app-all-button [ngClass]="'numbutton'" id="one" [value]="'1'"></app-all-button>
+    <app-all-button [ngClass]="'numbutton'" id="two" [value]="'2'"></app-all-button>
+    <app-all-button [ngClass]="'numbutton'" id="three" [value]="'3'"></app-all-button>
+</div>
+<div>
+    <app-all-button [ngClass]="'zero'" id="zero" [value]="'0'"></app-all-button>
+    <app-all-button [ngClass]="'numbutton'" id="decimal" [value]="'.'"></app-all-button>
+    <app-all-button [ngClass]="'equals'" id="equals" [value]="'='"></app-all-button>
+</div>
 

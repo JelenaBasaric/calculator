@@ -10,6 +10,9 @@ export class AllButtonComponent {
   @Input() name!:string;
   @Input() id!:string;
   @Input() value!:string;
+  @Input() ngStyle!:{[klass:string]:any;};
+  @Input() ngClass!:string;
+  @Input() callbackFun=(value:string):any
   
 
 }
