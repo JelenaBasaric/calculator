@@ -8,7 +8,7 @@
     <app-all-button [ngClass]="'opbutton'" id="multiply" [value]="'*'"></app-all-button>
 </div>
 <div>
-    <app-all-button [ngClass]="'numbutton'" id="seven" [value]="'7'" [callbackFun]="onClickSetValue"></app-all-button>
+    <app-all-button [ngClass]="'numbutton'" id="seven" [value]="'7'" (click)="onClickAddValue('value')"></app-all-button>
     <app-all-button [ngClass]="'numbutton'" id="eight" [value]="'8'"></app-all-button>
     <app-all-button [ngClass]="'numbutton'" id="nine" [value]="'9'"></app-all-button>
     <app-all-button [ngClass]="'opbutton'" id="subtract" [value]="'-'"></app-all-button>

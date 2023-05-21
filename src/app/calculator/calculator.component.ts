@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { onClickServiceAdd } from 'src/onClickAdd.service';
+import { calculatorService, } from 'src/calculatorService.service';
 
 @Component({
   selector: 'app-calculator',
@@ -10,16 +10,9 @@ import { onClickServiceAdd } from 'src/onClickAdd.service';
 export class CalculatorComponent {
  @Input() ngClass!:string;
  @Input() value!:string;
+ constructor(private calculatorService:calculatorService){}
 
- constructor( public onClickAddService:onClickServiceAdd){}
-
-onGetValue=(value:number):string=>
-{
-  return this.onClickAddService.getValue(this.value);
-
-}
-onClickSetValue=(value:string):string =>
-{
-  return this.onClickAddService.setString(this.value)
-}
+ onClickAddValue(value:string){
+this.calculatorService.addValueString(value);
+ }
 }
