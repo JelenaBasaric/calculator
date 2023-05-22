@@ -7,6 +7,7 @@ export class calculatorService {
     formula: string = "0";
     result = "0";
     value: string = '0';
+    resultAll:number=0;
     getValues(): any {
         return this.formula;
 
@@ -59,6 +60,18 @@ export class calculatorService {
 
     }
     equalsAll() {
+        if(this.formula.includes('.')){
+            this.resultAll=parseFloat(this.formula);
+            console.log(this.resultAll);
+            this.result=(this.resultAll.toString());
+            this.formula="";
+            this.valueResult.emit(this.result);
+        }
+        else{
+            this.resultAll=(parseInt(this.formula));
+            console.log(this.resultAll);
+            this.result=(this.resultAll.toString());
+        }
       
 
 

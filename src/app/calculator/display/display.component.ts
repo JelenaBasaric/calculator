@@ -13,16 +13,19 @@ export class DisplayComponent implements OnInit {
   @Input() value!:string;
   @Input() ngClass!:string;
   constructor (private calculatorService:calculatorService){}
-formula="";
-result="";
+formula="0";
+result="0";
   ngOnInit(): void {
     this.calculatorService.valueFormula.subscribe(
-    (value:string)=>{this.value=value;}
+    (value:string)=>{this.formula=value;}
     );
     this.calculatorService.valueResult.subscribe(
-      (value:string)=>{this.value=value;}
+      (value:string)=>{this.result=value;}
     );
     
+  }
+  isFormulaScreen(id:string):boolean{
+    return (id==="formulaScreen")? true:false
   }
 }
 
