@@ -13,13 +13,17 @@ export class DisplayComponent implements OnInit {
   @Input() value!:string;
   @Input() ngClass!:string;
   constructor (private calculatorService:calculatorService){}
-
+formula="";
+result="";
   ngOnInit(): void {
-    this.calculatorService.valueArrayChanged.subscribe(
+    this.calculatorService.valueFormula.subscribe(
     (value:string)=>{this.value=value;}
     );
-  }
+    this.calculatorService.valueResult.subscribe(
+      (value:string)=>{this.value=value;}
+    );
     
   }
+}
 
 

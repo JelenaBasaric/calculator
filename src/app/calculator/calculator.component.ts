@@ -9,10 +9,22 @@ import { calculatorService, } from 'src/calculatorService.service';
 })
 export class CalculatorComponent {
  @Input() ngClass!:string;
- @Input() value!:string;
+ 
  constructor(private calculatorService:calculatorService){}
+ values=this.calculatorService.getValues();
+ result=this.calculatorService.getResult();
 
  onClickAddValue(value:string){
 this.calculatorService.addValueString(value);
+ }
+ onClickDeleteAll(){
+  this.calculatorService.deleteAll();
+ }
+ equalsAll(){
+  this.calculatorService.equalsAll();
+  //this.calculatorService.deleteAll();
+ }
+ addOperationSign(value:string){
+  this.calculatorService.addOperationSign(value);
  }
 }
