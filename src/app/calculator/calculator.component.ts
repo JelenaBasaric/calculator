@@ -14,8 +14,8 @@ export class CalculatorComponent {
  formula=this.calculatorService.getValues();
  result=this.calculatorService.getResult();
 
- onClickAddValue(value:string){
-this.calculatorService.addValueString(value);
+ onClickShowValue(value:string){    
+this.calculatorService.showValueString(value);
  }
  onClickEquals(){
   this.calculatorService.equalsAll()
@@ -23,10 +23,7 @@ this.calculatorService.addValueString(value);
  onClickDeleteAll(){
   this.calculatorService.deleteAll();
  }
- equalsAll(){
-  this.calculatorService.equalsAll();
-  //this.calculatorService.deleteAll();
- }
+
  addOperationSign(value:string){
   this.calculatorService.addOperationSign(value);
  }

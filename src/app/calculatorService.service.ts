@@ -4,21 +4,21 @@ import { Observable, first } from "rxjs";
 export class calculatorService {
     valueFormula = new EventEmitter<string>();
     valueResult = new EventEmitter<string>();
-    numberAndOperationrray:string[]=[]
+    numberArray: string[] = [];
     formula: string = "0";
     result = "0";
     value: string = '0';
-    resultAll:number=0;
+    resultAll: number = 0;
     getValues(): any {
         return this.formula;
 
     }
-    
+
     getResult() {
         return this.result;
     }
-   
-    addValueString(value: string) {
+
+    showValueString(value: string) {
 
         if (this.formula.endsWith("0") && value != "." && value != "+"
             && value != "-" && value != "*" && value != "/") {
@@ -36,25 +36,25 @@ export class calculatorService {
         if (value != "-") {
             if (this.formula.endsWith("+- ") || this.formula.endsWith("/- ") || this.formula.endsWith("*- ") || this.formula.endsWith("-- ")) { return; }
             else if (this.formula.endsWith(" - ") || this.formula.endsWith(" / ") || this.formula.endsWith(" * ") || this.formula.endsWith(" + ")) {
-                this.formula =this.formula.trimEnd().replace(/.$/, value+" ");
-               // this.formula = this.formula.replace(/.$/, value+" ");
+                this.formula = this.formula.trimEnd().replace(/.$/, value + " ");
+                // this.formula = this.formula.replace(/.$/, value+" ");
                 this.valueFormula.emit(this.formula); return;
             }
 
             else {
-                this.formula +=" "+ value+" ";
+                this.formula += " " + value + " ";
                 this.valueFormula.emit(this.formula);
             }
         }
         else {
             if (this.formula.endsWith("+- ") || this.formula.endsWith("/- ") || this.formula.endsWith("*- ") || this.formula.endsWith("-- ")) { return; }
             else if (this.formula.endsWith(" - ") || this.formula.endsWith(" / ") || this.formula.endsWith(" * ") || this.formula.endsWith(" + ")) {
-                this.formula=this.formula.trimEnd()+value+" ";
-              //  this.formula += value+" ";
+                this.formula = this.formula.trimEnd() + value + " ";
+                //  this.formula += value+" ";
                 this.valueFormula.emit(this.formula); return;
             }
             else {
-                this.formula +=" "+ value+" ";
+                this.formula += " " + value + " ";
                 this.valueFormula.emit(this.formula);
             }
         }
@@ -64,45 +64,114 @@ export class calculatorService {
 
     }
     equalsAll() {
-        if(this.formula.includes('.')){
-            this.numberAndOperationrray=this.formula.split(" ");
-            this.resultAll=parseFloat(this.formula);
-            for(let i=0;i<this.numberAndOperationrray.length;i++){
-            console.log(this.numberAndOperationrray[i]);
-           // this.resultAll+=parseFloat(this.numberAndOperationrray[i]);
-            if(this.numberAndOperationrray[i].startsWith('*'))
+        this.numberArray = this.formula.split(" ");
+        for (let i = 0; i < this.numberArray.length - 1; i++) {
+            if (this.numberArray[i] === "*") {
+                let br = i;
+                let sum = parseFloat(this.numberArray[br - 1]) * parseFloat(this.numberArray[br + 1]);
+                this.numberArray[br - 1] = sum.toString();
+                for (br; br < this.numberArray.length - 3; br++) {
+                    this.numberArray[br] = this.numberArray[br + 2];
+                }
+                this.numberArray.length--;
 
-            {let m=parseFloat(this.numberAndOperationrray[i-1]);
-                let n=parseFloat(this.numberAndOperationrray[i-1]);
-                let r=m*n;
             }
-            this.resultAll+=r;
-        }
-         console.log(this.resultAll);
-        
-           // this.result=(this.resultAll.toString());
-            //this.formula="0";
-            //this.valueResult.emit(this.result);
-            //this.valueFormula.emit(this.formula);
-        }
-        else{
-            this.numberAndOperationrray=this.formula.split(" ");
-            //this.resultAll=parseFloat(this.formula);
-            for(let i=0;i<this.numberAndOperationrray.length;i++){
-            console.log(this.numberAndOperationrray[i]);}
-            // this.resultAll=(parseInt(this.formula));
-            // console.log(this.resultAll);
-            // this.result=(this.resultAll.toString());
-            // this.formula="0";
-            // this.valueResult.emit(this.result);
-            // this.valueFormula.emit(this.formula);
-        }
-      
 
 
-    }
-    deleteAll() {
-        this.formula = "0";
-        this.valueFormula.emit(this.formula);
-    }
+
+            else if (this.numberArray[i] === "*-") {
+                let br = i;
+                let sum = parseFloat(this.numberArray[br - 1]) * parseFloat(this.numberArray[br + 1]) * (-1);
+                this.numberArray[br - 1] = sum.toString();
+                for (br; br < this.numberArray.length - 3; i++) {
+                    this.numberArray[br] = this.numberArray[br + 2];
+                    
+                }
+                this.numberArray.length--;
+               
+
+
+            }
+            else if (this.numberArray[i] === "/") {
+                let br = i;
+                let sum = parseFloat(this.numberArray[br - 1]) / parseFloat(this.numberArray[br + 1]);
+                this.numberArray[br - 1] = sum.toString();
+                for (br; br < this.numberArray.length - 3; i++) {
+                    this.numberArray[br] = this.numberArray[br + 2];
+                    
+                }
+                this.numberArray.length--;
+               
+                
+
+
+            }
+            else if (this.numberArray[i] === "/-") {
+                let br = i;
+                let sum = parseFloat(this.numberArray[br - 1]) / parseFloat(this.numberArray[br + 1]) * (-1);
+                this.numberArray[br - 1] = sum.toString();
+                for (br; br < this.numberArray.length - 3; i++) {
+                    this.numberArray[br] = this.numberArray[br + 2];
+                    
+                }
+                this.numberArray.length--;
+                
+
+
+            }
+        }
+
+        for (let i = 0; i < this.numberArray.length - 1; i++) {
+            if (this.numberArray[i] === "+") {
+                let br = i;
+                let sum = parseFloat(this.numberArray[br - 1]) + parseFloat(this.numberArray[br + 1]);
+                this.numberArray[br - 1] = sum.toString();
+                for (br; br < this.numberArray.length - 3; br++) {
+                    this.numberArray[br] = this.numberArray[br + 2];
+                }
+                this.numberArray.length--;
+
+            }
+            else  if (this.numberArray[i] === "-") {
+                let br = i;
+                let sum = parseFloat(this.numberArray[br - 1]) - parseFloat(this.numberArray[br + 1]);
+                this.numberArray[br - 1] = sum.toString();
+                for (br; br < this.numberArray.length - 3; br++) {
+                    this.numberArray[br] = this.numberArray[br + 2];
+                }
+                this.numberArray.length--;
+
+            }
+            else  if (this.numberArray[i] === "+-") {
+                let br = i;
+                let sum = parseFloat(this.numberArray[br - 1]) + (parseFloat(this.numberArray[br + 1]))*(-1);
+                this.numberArray[br - 1] = sum.toString();
+                for (br; br < this.numberArray.length - 3; br++) {
+                    this.numberArray[br] = this.numberArray[br + 2];
+                }
+                this.numberArray.length--;
+
+            }
+            else if (this.numberArray[i] === "--") {
+                let br = i;
+                let sum = parseFloat(this.numberArray[br - 1]) - (parseFloat(this.numberArray[br + 1]))*(-1);
+                this.numberArray[br - 1] = sum.toString();
+                for (br; br < this.numberArray.length - 3; br++) {
+                    this.numberArray[br] = this.numberArray[br + 2];
+                }
+                this.numberArray.length--;
+
+            }
+        } for (let i = 0; i < this.numberArray.length - 1; i++) {
+            console.log("Novi niz:" + this.numberArray[i]);
+        }
+     
+
+}
+
+
+deleteAll() {
+    this.formula = "0";
+    this.valueFormula.emit(this.formula);
+}
 }
