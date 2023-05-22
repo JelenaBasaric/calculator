@@ -17,6 +17,9 @@ export class CalculatorComponent {
  onClickAddValue(value:string){
 this.calculatorService.addValueString(value);
  }
+ onClickEquals(){
+  this.calculatorService.equalsAll()
+ }
  onClickDeleteAll(){
   this.calculatorService.deleteAll();
  }

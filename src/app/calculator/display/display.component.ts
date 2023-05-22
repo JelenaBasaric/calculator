@@ -25,7 +25,8 @@ result="0";
     
   }
   isFormulaScreen(id:string):boolean{
-    return (id==="formulaScreen")? true:false
+    id=this.id;
+    return (id==="outputScreen")? false:true
   }
 }
 

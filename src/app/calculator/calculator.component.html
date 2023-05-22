@@ -28,6 +28,6 @@
 <div>
     <app-all-button [ngClass]="'zero'" id="zero" [value]="'0'" (click)="onClickAddValue('0')"></app-all-button>
     <app-all-button [ngClass]="'numbutton'" id="decimal" [value]="'.'" (click)="onClickAddValue('.')"></app-all-button>
-    <app-all-button [ngClass]="'equals'" id="equals" [value]="'='" (click)="equalsAll()"></app-all-button>
+    <app-all-button [ngClass]="'equals'" id="equals" [value]="'='" (click)=" onClickEquals()"></app-all-button>
 </div>
 

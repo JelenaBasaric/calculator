@@ -1,3 +1,3 @@
-<div ngClass="ngClass" *ngIf="isFormulaScreen">{{formula}}</div>
-<div ngClass="ngClass" *ngIf="!isFormulaScreen">{{result}}</div>
+<div ngClass="ngClass" id='formulaScreen'*ngIf="isFormulaScreen(id)">{{formula}}</div>
+<div ngClass="ngClass" id='outputScreen'*ngIf="!isFormulaScreen(id)">{{result}}</div>
 
