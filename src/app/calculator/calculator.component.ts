@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { calculatorService, } from 'src/calculatorService.service';
+import { calculatorService, } from 'src/app/calculatorService.service';
 
 @Component({
   selector: 'app-calculator',
@@ -11,7 +11,7 @@ export class CalculatorComponent {
  @Input() ngClass!:string;
  
  constructor(private calculatorService:calculatorService){}
- values=this.calculatorService.getValues();
+ formula=this.calculatorService.getValues();
  result=this.calculatorService.getResult();
 
  onClickAddValue(value:string){

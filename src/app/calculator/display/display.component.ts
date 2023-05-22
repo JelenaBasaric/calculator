@@ -1,7 +1,7 @@
 import { NgClass } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute,Params } from '@angular/router';
-import { calculatorService } from 'src/calculatorService.service';
+import { calculatorService } from 'src/app/calculatorService.service';
 
 @Component({
   selector: 'app-display',
