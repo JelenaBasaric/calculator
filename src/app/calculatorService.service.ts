@@ -72,8 +72,8 @@ export class calculatorService {
                 let br = i;
                 let sum = parseFloat(this.numberArray[br - 1]) * parseFloat(this.numberArray[br + 1]);
                 this.numberArray[br - 1] = sum.toString();
-                for (br=i-1; br < this.numberArray.length - 2; br++) {
-                    this.numberArray[br] = this.numberArray[i+1];
+                for (br; br < this.numberArray.length - 3; i++) {
+                    this.numberArray[br] = this.numberArray[br + 2];
                     this.numberArray.length --;
                 }
                
@@ -86,11 +86,12 @@ export class calculatorService {
                 let br = i;
                 let sum = parseFloat(this.numberArray[br - 1]) * parseFloat(this.numberArray[br + 1]) * (-1);
                 this.numberArray[br - 1] = sum.toString();
-                for (br=i-1; br < this.numberArray.length - 2; br++){
+                for (br; br < this.numberArray.length - 3; i++) {
                     this.numberArray[br] = this.numberArray[br + 2];
+                    this.numberArray.length --;
 
                 }
-                this.numberArray.length --;
+              
 
 
 
@@ -101,9 +102,9 @@ export class calculatorService {
                 this.numberArray[br - 1] = sum.toString();
                 for (br; br < this.numberArray.length - 3; i++) {
                     this.numberArray[br] = this.numberArray[br + 2];
-
+                    this.numberArray.length --;
                 }
-                this.numberArray.length --;
+              
 
 
 
@@ -115,9 +116,9 @@ export class calculatorService {
                 this.numberArray[br - 1] = sum.toString();
                 for (br; br < this.numberArray.length - 3; i++) {
                     this.numberArray[br] = this.numberArray[br + 2];
-
+                    this.numberArray.length --;
                 }
-                this.numberArray.length --;
+                
 
 
 
@@ -131,8 +132,9 @@ export class calculatorService {
                 this.numberArray[br - 1] = sum.toString();
                 for (br; br < this.numberArray.length - 3; br++) {
                     this.numberArray[br] = this.numberArray[br + 2];
+                    this.numberArray.length --;
                 }
-                this.numberArray.length --;
+           
 
             }
             else if (this.numberArray[i] === "-") {
@@ -141,8 +143,9 @@ export class calculatorService {
                 this.numberArray[br - 1] = sum.toString();
                 for (br; br < this.numberArray.length - 3; br++) {
                     this.numberArray[br] = this.numberArray[br + 2];
+                    this.numberArray.length --;
                 }
-                this.numberArray.length --;
+                
 
             }
             else if (this.numberArray[i] === "+-") {
@@ -151,8 +154,9 @@ export class calculatorService {
                 this.numberArray[br - 1] = sum.toString();
                 for (br; br < this.numberArray.length - 3; br++) {
                     this.numberArray[br] = this.numberArray[br + 2];
+                    this.numberArray.length --;
                 }
-                this.numberArray.length --;
+     
 
             }
             else if (this.numberArray[i] === "--") {
@@ -161,8 +165,9 @@ export class calculatorService {
                 this.numberArray[br - 1] = sum.toString();
                 for (br; br < this.numberArray.length - 3; br++) {
                     this.numberArray[br] = this.numberArray[br + 2];
+                    this.numberArray.length --;
                 }
-                this.numberArray.length --;
+             
 
             }
 
