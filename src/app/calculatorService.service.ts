@@ -20,19 +20,26 @@ export class calculatorService {
 
     showValueString(value: string) {
 
-        if (this.formula.endsWith("0") && value != "." && value != "+"
+        if (this.formula.endsWith([ ]+"0") && value != "." && value != "+"
             && value != "-" && value != "*" && value != "/") {
             this.formula = this.formula.replace(/.$/, value);
 
             this.valueFormula.emit(this.formula);
         }
-        else {
+        else if (this.formula.endsWith([0-9]+"0")) {
+            this.formula += value;
+            this.valueFormula.emit(this.formula);
+        }
+        else{
             this.formula += value;
             this.valueFormula.emit(this.formula);
         }
 
     }
     addOperationSign(value: string) {
+        if(this.formula==="0"){
+            this.formula=this.result;
+        }
         if (value != "-") {
             if (this.formula.endsWith("+- ") || this.formula.endsWith("/- ") || this.formula.endsWith("*- ") || this.formula.endsWith("-- ")) { return; }
             else if (this.formula.endsWith(" - ") || this.formula.endsWith(" / ") || this.formula.endsWith(" * ") || this.formula.endsWith(" + ")) {
@@ -173,6 +180,9 @@ export class calculatorService {
 
         }
         this.result = this.numberArray[0];
+        this.valueResult.emit(this.result);
+        this.formula="0";
+        this.valueFormula.emit(this.formula);
         for (let i = 0; i < this.numberArray.length - 1; i++) {
             console.log("Novi niz:" + this.numberArray[i]);
             console.log(this.result);
