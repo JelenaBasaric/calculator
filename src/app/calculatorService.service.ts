@@ -2,6 +2,7 @@ import { EventEmitter } from "@angular/core";
 import { Observable, first } from "rxjs";
 
 export class calculatorService {
+    point=false;
     valueFormula = new EventEmitter<string>();
     valueResult = new EventEmitter<string>();
     numberArray: string[] = [];
@@ -36,6 +37,15 @@ export class calculatorService {
         }
 
     }
+    addPoint(value:string){
+        if(this.point!=true){
+            this.point=true;
+            this.formula+=value;
+            this.valueFormula.emit(this.formula);
+        }
+       
+
+    }
     addOperationSign(value: string) {
         if (this.formula === "0") {
             this.formula = this.result;
@@ -45,11 +55,14 @@ export class calculatorService {
             else if (this.formula.endsWith(" - ") || this.formula.endsWith(" / ") || this.formula.endsWith(" * ") || this.formula.endsWith(" + ")) {
                 this.formula = this.formula.trimEnd().replace(/.$/, value + " ");
                 // this.formula = this.formula.replace(/.$/, value+" ");
+                this.point=false;
                 this.valueFormula.emit(this.formula); return;
             }
+            
 
             else {
                 this.formula += " " + value + " ";
+                this.point=false;
                 this.valueFormula.emit(this.formula);
             }
         }
@@ -58,10 +71,12 @@ export class calculatorService {
             else if (this.formula.endsWith(" - ") || this.formula.endsWith(" / ") || this.formula.endsWith(" * ") || this.formula.endsWith(" + ")) {
                 this.formula = this.formula.trimEnd() + value + " ";
                 //  this.formula += value+" ";
+                this.point=false;
                 this.valueFormula.emit(this.formula); return;
             }
             else {
                 this.formula += " " + value + " ";
+                this.point=false;
                 this.valueFormula.emit(this.formula);
             }
         }

@@ -17,6 +17,9 @@ export class CalculatorComponent {
  onClickShowValue(value:string){    
 this.calculatorService.showValueString(value);
  }
+ onClickPoint(value:string){    
+  this.calculatorService.addPoint(value);
+   }
  onClickEquals(){
   this.calculatorService.equalsAll()
  }
