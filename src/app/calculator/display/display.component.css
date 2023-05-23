@@ -44,25 +44,4 @@
     line-height: 35px;
   }
   
- .allnumber{
-    position: relative;
-    height: 65px;
-    width: 80px;
-    color: white;
-    outline: 1px solid black;
-    border: none;
-    background: #4d4d4d;
-    font-family: Share Tech Mono, monospace;
-    font-size: 20px;
-    cursor: default;
-  }
-  .hover {
-    color: black;
-    outline: 0.05em solid grey;
-    z-index: 3;
-  }
-  
-  .jumbo {
-    width: 160px;
-  }
-  
+ 

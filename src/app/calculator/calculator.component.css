@@ -17,7 +17,7 @@
   
   .calculator {
     border: 2px solid #47476b;
-    padding: 5px;
+    /* padding: 5px; */
     background: black;
     width: 318px;
     position: relative;
@@ -43,54 +43,4 @@
     line-height: 35px;
   }
   
- .numbutton{
-    position: relative;
-    height: 65px;
-    width: 80px;
-    color: white;
-    outline: 1px solid black;
-    border: none;
-    background: #4d4d4d;
-    font-family: Share Tech Mono, monospace;
-    font-size: 20px;
-    cursor: default;
-  }
-  .opbutton{
-    position: relative;
-    height: 65px;
-    width: 80px;
-    color: white;
-    outline: 1px solid black;
-    border: none;
-    background:rgb(102,102,102);
-    font-family: Share Tech Mono, monospace;
-    font-size: 20px;
-    cursor: default;
-  }
-  .hover {
-    color: black;
-    outline: 0.05em solid grey;
-    z-index: 3;
-  }
-  
-  
-  .ac {
-    height: 65px;
-    width: 160px;
-    background-color: rgb(172,57,57);
-  }
-  .equals {
-    background: rgb(0,68,102);
-    position:absolute;
-    height :130;
-    width: 80px;
-    bottom: 5px;
-  }
-  .jumbo {
-    width: 160px;
-  }
-  .zero {
-    height: 65px;
-    width: 160px;
-    background: #4d4d4d;
-  }
+ 

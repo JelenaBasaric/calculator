@@ -1,55 +1,11 @@
-#app {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  body {
-    background: #c2c2d6;
-    -webkit-touch-callout: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    cursor: default;
-  }
-  
-  .calculator {
-    border: 2px solid #47476b;
-    padding: 5px;
-    background: black;
-    width: 325px;
-    position: relative;
-  }
-  
-  .formulaScreen {
-    min-height: 20px;
-    font-family: digital;
-    font-size: 20px;
-    color: orange;
-    text-align: right;
-    vertical-align: text-top;
-    line-height: 20px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-  }
-  
-  .outputScreen {
-    font-size: 29px;
-    font-family: digital;
-    color: white;
-    text-align: right;
-    line-height: 35px;
-  }
-  
+
   .numbutton{
     position: relative;
     height: 64px;
     width: 79px;
     color: white;
     outline: 1px solid black;
-    border: none;
+    /* border: none; */
     background: #4d4d4d;
     font-family: Share Tech Mono, monospace;
     font-size: 20px;
@@ -61,7 +17,7 @@
     width: 79px;
     color: white;
     outline: 1px solid black;
-    border: none;
+    /* border: none; */
     background:rgb(102,102,102);
     font-family: Share Tech Mono, monospace;
     font-size: 20px;
@@ -85,9 +41,9 @@
     background: rgb(0,68,102);
     color: white;
     position:absolute;
-    height :129px;
+    height :130px;
     width: 80px;
-    bottom: 17px;
+    bottom: 0px;
   }
   .jumbo {
     width: 160px;
