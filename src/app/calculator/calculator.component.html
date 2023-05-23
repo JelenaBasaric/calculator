@@ -26,7 +26,7 @@
     <app-all-button [ngClass]="'numbutton'" id="three" [value]="'3'" (click)="onClickShowValue('3')"></app-all-button>
 </div>
 <div>
-    <app-all-button [ngClass]="'zero'" id="zero" [value]="'0'" (click)="onClickShowValue('0')"></app-all-button>
+    <app-all-button [ngClass]="'zero'" id="zero" [value]="'0'" (click)=" onClickShoworDeleteZero('0')"></app-all-button>
     <app-all-button [ngClass]="'numbutton'" id="decimal" [value]="'.'" (click)="onClickPoint('.')"></app-all-button>
     <app-all-button [ngClass]="'equals'" id="equals" [value]="'='" (click)=" onClickEquals()"></app-all-button>
 </div>

@@ -20,6 +20,9 @@ this.calculatorService.showValueString(value);
  onClickPoint(value:string){    
   this.calculatorService.addPoint(value);
    }
+   onClickShoworDeleteZero(value:string){
+    this.calculatorService.showAndDeleteZero(value);
+   }
  onClickEquals(){
   this.calculatorService.equalsAll()
  }
