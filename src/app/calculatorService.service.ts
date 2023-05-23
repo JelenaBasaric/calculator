@@ -248,5 +248,6 @@ export class calculatorService {
         this.valueResult.emit(this.result);
         this.point = false;
         this.startWithZero = true;
+        
     }
 }
