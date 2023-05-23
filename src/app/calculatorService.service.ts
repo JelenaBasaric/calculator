@@ -20,25 +20,25 @@ export class calculatorService {
 
     showValueString(value: string) {
 
-        if (this.formula.endsWith([ ]+"0") && value != "." && value != "+"
+        if (this.formula.endsWith([] + "0") && value != "." && value != "+"
             && value != "-" && value != "*" && value != "/") {
             this.formula = this.formula.replace(/.$/, value);
 
             this.valueFormula.emit(this.formula);
         }
-        else if (this.formula.endsWith([0-9]+"0")) {
+        else if (this.formula.endsWith([0 - 9] + "0")) {
             this.formula += value;
             this.valueFormula.emit(this.formula);
         }
-        else{
+        else {
             this.formula += value;
             this.valueFormula.emit(this.formula);
         }
 
     }
     addOperationSign(value: string) {
-        if(this.formula==="0"){
-            this.formula=this.result;
+        if (this.formula === "0") {
+            this.formula = this.result;
         }
         if (value != "-") {
             if (this.formula.endsWith("+- ") || this.formula.endsWith("/- ") || this.formula.endsWith("*- ") || this.formula.endsWith("-- ")) { return; }
@@ -73,120 +73,130 @@ export class calculatorService {
     equalsAll() {
 
         this.numberArray = this.formula.split(" ");
+        while (this.numberArray.length != 1) {
+            for (let i = 0; i < this.numberArray.length; i++) {
+                
+                if (this.numberArray[i] === "*") {
+                    let br = i;
+                    let sum = parseFloat(this.numberArray[br - 1]) * parseFloat(this.numberArray[br + 1]);
+                    this.numberArray[br - 1] = sum.toString();
+                    for (br = i; br <= this.numberArray.length - 3; br++) {
+                        this.numberArray[br] = this.numberArray[br + 2];
 
-        for (let i = 0; i < this.numberArray.length - 1; i++) {
-            if (this.numberArray[i] === "*") {
-                let br = i;
-                let sum = parseFloat(this.numberArray[br - 1]) * parseFloat(this.numberArray[br + 1]);
-                this.numberArray[br - 1] = sum.toString();
-                for (br; br < this.numberArray.length - 3; i++) {
-                    this.numberArray[br] = this.numberArray[br + 2];
-                    this.numberArray.length --;
+                    }
+                    this.numberArray.length -= 2;
+
                 }
+            }
+              for (let i = 0; i < this.numberArray.length; i++) {
+              
+                if (this.numberArray[i] === "*-") {
+                    let br = i;
+                    let sum = parseFloat(this.numberArray[br - 1]) * parseFloat(this.numberArray[br + 1])*(-1);
+                    this.numberArray[br - 1] = sum.toString();
+                    for (br = i; br <= this.numberArray.length - 3; br++) {
+                        this.numberArray[br] = this.numberArray[br + 2];
+
+                    }
+                    this.numberArray.length -= 2;
+
+                }
+            }
+              for (let i = 0; i < this.numberArray.length; i++) {
+              
+                if (this.numberArray[i] === "/") {
+                    let br = i;
+                    let sum = parseFloat(this.numberArray[br - 1]) / parseFloat(this.numberArray[br + 1]);
+                    this.numberArray[br - 1] = sum.toString();
+                    for (br = i; br <= this.numberArray.length - 3; br++) {
+                        this.numberArray[br] = this.numberArray[br + 2];
+
+                    }
+                    this.numberArray.length -= 2;
+
+                }
+                  for (let i = 0; i < this.numberArray.length; i++) {
+                
+                if (this.numberArray[i] === "/-") {
+                    let br = i;
+                    let sum = parseFloat(this.numberArray[br - 1]) / (parseFloat(this.numberArray[br + 1]))*(-1);
+                    this.numberArray[br - 1] = sum.toString();
+                    for (br = i; br <= this.numberArray.length - 3; br++) {
+                        this.numberArray[br] = this.numberArray[br + 2];
+
+                    }
+                    this.numberArray.length -= 2;
+
+                }
+            }
+            }
+            for (let i = 0; i < this.numberArray.length; i++) {
+        
+                if (this.numberArray[i] === "+") {
+                    let br = i;
+                    let sum = parseFloat(this.numberArray[br - 1]) + parseFloat(this.numberArray[br + 1]);
+                    this.numberArray[br - 1] = sum.toString();
+                    for (br = i; br <= this.numberArray.length - 3; br++) {
+                        this.numberArray[br] = this.numberArray[br + 2];
+
+                    }
+                    this.numberArray.length -= 2;
+
+                }
+            }
+              for (let i = 0; i < this.numberArray.length; i++) {
+                
+                if (this.numberArray[i] === "+-") {
+                    let br = i;
+                    let sum = parseFloat(this.numberArray[br - 1]) + (parseFloat(this.numberArray[br + 1])*(-1));
+                    this.numberArray[br - 1] = sum.toString();
+                    for (br = i; br <= this.numberArray.length - 3; br++) {
+                        this.numberArray[br] = this.numberArray[br + 2];
+
+                    }
+                    this.numberArray.length -= 2;
+
+                }
+            }
+              for (let i = 0; i < this.numberArray.length; i++) {
                
+                if (this.numberArray[i] === "-") {
+                    let br = i;
+                    let sum = parseFloat(this.numberArray[br - 1]) - parseFloat(this.numberArray[br + 1]);
+                    this.numberArray[br - 1] = sum.toString();
+                    for (br = i; br <= this.numberArray.length - 3; br++) {
+                        this.numberArray[br] = this.numberArray[br + 2];
 
-            }
-
-
-
-            else if (this.numberArray[i] === "*-") {
-                let br = i;
-                let sum = parseFloat(this.numberArray[br - 1]) * parseFloat(this.numberArray[br + 1]) * (-1);
-                this.numberArray[br - 1] = sum.toString();
-                for (br; br < this.numberArray.length - 3; i++) {
-                    this.numberArray[br] = this.numberArray[br + 2];
-                    this.numberArray.length --;
+                    }
+                    this.numberArray.length -= 2;
 
                 }
+            }
+              for (let i = 0; i < this.numberArray.length; i++) {
               
+                if (this.numberArray[i] === "--") {
+                    let br = i;
+                    let sum = parseFloat(this.numberArray[br - 1]) -( parseFloat(this.numberArray[br + 1])*(-1));
+                    this.numberArray[br - 1] = sum.toString();
+                    for (br = i; br <= this.numberArray.length - 3; br++) {
+                        this.numberArray[br] = this.numberArray[br + 2];
 
+                    }
+                    this.numberArray.length -= 2;
 
-
-            }
-            else if (this.numberArray[i] === "/") {
-                let br = i;
-                let sum = parseFloat(this.numberArray[br - 1]) / parseFloat(this.numberArray[br + 1]);
-                this.numberArray[br - 1] = sum.toString();
-                for (br; br < this.numberArray.length - 3; i++) {
-                    this.numberArray[br] = this.numberArray[br + 2];
-                    this.numberArray.length --;
                 }
-              
-
-
-
-
-            }
-            else if (this.numberArray[i] === "/-") {
-                let br = i;
-                let sum = parseFloat(this.numberArray[br - 1]) / parseFloat(this.numberArray[br + 1]) * (-1);
-                this.numberArray[br - 1] = sum.toString();
-                for (br; br < this.numberArray.length - 3; i++) {
-                    this.numberArray[br] = this.numberArray[br + 2];
-                    this.numberArray.length --;
-                }
-                
-
-
-
-            }
-        }
-
-        for (let i = 0; i < this.numberArray.length - 1; i++) {
-            if (this.numberArray[i] === "+") {
-                let br = i;
-                let sum = parseFloat(this.numberArray[br - 1]) + parseFloat(this.numberArray[br + 1]);
-                this.numberArray[br - 1] = sum.toString();
-                for (br; br < this.numberArray.length - 3; br++) {
-                    this.numberArray[br] = this.numberArray[br + 2];
-                    this.numberArray.length --;
-                }
-           
-
-            }
-            else if (this.numberArray[i] === "-") {
-                let br = i;
-                let sum = parseFloat(this.numberArray[br - 1]) - parseFloat(this.numberArray[br + 1]);
-                this.numberArray[br - 1] = sum.toString();
-                for (br; br < this.numberArray.length - 3; br++) {
-                    this.numberArray[br] = this.numberArray[br + 2];
-                    this.numberArray.length --;
-                }
-                
-
-            }
-            else if (this.numberArray[i] === "+-") {
-                let br = i;
-                let sum = parseFloat(this.numberArray[br - 1]) + (parseFloat(this.numberArray[br + 1])) * (-1);
-                this.numberArray[br - 1] = sum.toString();
-                for (br; br < this.numberArray.length - 3; br++) {
-                    this.numberArray[br] = this.numberArray[br + 2];
-                    this.numberArray.length --;
-                }
-     
-
-            }
-            else if (this.numberArray[i] === "--") {
-                let br = i;
-                let sum = parseFloat(this.numberArray[br - 1]) - (parseFloat(this.numberArray[br + 1])) * (-1);
-                this.numberArray[br - 1] = sum.toString();
-                for (br; br < this.numberArray.length - 3; br++) {
-                    this.numberArray[br] = this.numberArray[br + 2];
-                    this.numberArray.length --;
-                }
-             
-
             }
 
         }
-        this.result = this.numberArray[0];
-        this.valueResult.emit(this.result);
-        this.formula="0";
-        this.valueFormula.emit(this.formula);
-        for (let i = 0; i < this.numberArray.length - 1; i++) {
-            console.log("Novi niz:" + this.numberArray[i]);
-            console.log(this.result);
-        }
+        
+
+
+
+         this.result = this.numberArray[0];
+         this.valueResult.emit(this.result);
+         this.formula="0";
+         this.valueFormula.emit(this.formula);
+        
 
 
 
