@@ -243,7 +243,10 @@ export class calculatorService {
 
 
     deleteAll() {
-        this.formula = "0";
+        this.formula=this.result = "0";
         this.valueFormula.emit(this.formula);
+        this.valueResult.emit(this.result);
+        this.point = false;
+        this.startWithZero = true;
     }
 }
